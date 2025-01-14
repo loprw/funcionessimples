@@ -74,4 +74,31 @@ public class HerramientasPersonas {
 
         return dniValido;
     }
+
+    public static String getDiaNacimiento(int dia, int mes, int any) {
+
+        String[] diaSemana = {"sábado", "domingo", "lunes", "martes", "miércoles", "jueves", "viernes"};
+        
+        if (mes == 1) {
+            mes = 13;
+            any--;
+        } else if (mes == 2) {
+            mes = 14;
+            any--;
+        }
+
+        int calculo1, calculo2, calculo3, calculo4, calculo5, calculo6, resultado;
+
+        calculo1 = (mes + 1) * 3 / 5;
+        calculo2 = any / 4;
+        calculo3 = any / 100;
+        calculo4 = any / 400;
+        calculo5 = dia + (mes * 2) + any + calculo1 + calculo2 - calculo3 + calculo4 + 2;
+        calculo6 = calculo5 / 7;
+        resultado = calculo5 - (calculo6 * 7);
+
+        String diaUsuario = diaSemana[resultado];
+
+        return diaUsuario;
+    }
 }
